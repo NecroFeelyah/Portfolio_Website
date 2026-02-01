@@ -1974,15 +1974,15 @@ body::-webkit-scrollbar {
 
 .built-with {
   --built-with-bg: rgba(255, 255, 255, 0.02);
-  --built-with-border: rgba(255, 255, 255, 0.18);
-  --built-with-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-  --built-with-shadow-hover: 0 12px 28px rgba(0, 0, 0, 0.45);
+  --built-with-border: rgba(255, 255, 255, 0.22);
+  --built-with-border-hover: rgba(255, 255, 255, 0.45);
+  --built-with-shadow: 0 10px 22px rgba(0, 0, 0, 0.35);
+  --built-with-shadow-hover: 0 14px 32px rgba(0, 0, 0, 0.5);
   --built-with-text: #f4f4f4;
   --built-with-muted: rgba(255, 255, 255, 0.7);
-  --built-with-pill-bg: rgba(20, 20, 20, 0.6);
-  --built-with-pill-border: rgba(255, 255, 255, 0.18);
-  --built-with-gap: clamp(12px, 2vw, 20px);
-  --built-with-padding: clamp(40px, 6vw, 80px);
+  --built-with-tile-bg: rgba(20, 20, 20, 0.55);
+  --built-with-gap: clamp(14px, 2.2vw, 22px);
+  --built-with-padding: clamp(48px, 6vw, 90px);
   width: 100%;
   padding: var(--built-with-padding) clamp(20px, 5vw, 60px);
   background: var(--built-with-bg);
@@ -1994,13 +1994,13 @@ body::-webkit-scrollbar {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: clamp(18px, 2.5vw, 26px);
+  gap: clamp(18px, 2.5vw, 28px);
 }
 
 .built-with__header h2 {
   margin: 0;
   font-size: clamp(28px, 4vw, 42px);
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
 }
 
 .built-with__header p {
@@ -2013,37 +2013,59 @@ body::-webkit-scrollbar {
 .built-with__stack {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   gap: var(--built-with-gap);
   align-items: center;
 }
 
-.built-with__item {
+.built-with__tile {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
   padding: 12px 18px;
+  min-height: 56px;
   border-radius: 999px;
-  border: 1px solid var(--built-with-pill-border);
-  background: var(--built-with-pill-bg);
+  border: 1px solid var(--built-with-border);
+  background: var(--built-with-tile-bg);
   box-shadow: var(--built-with-shadow);
-  font-family: "JetBrains Mono", monospace;
+  font-family: "JetBrains Mono", "SFMono-Regular", "Menlo", "Monaco", "Consolas", monospace;
   font-size: clamp(13px, 1.6vw, 16px);
   letter-spacing: 0.03em;
-  text-transform: none;
   color: var(--built-with-text);
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+  backdrop-filter: blur(10px);
 }
 
-.built-with__item.is-visible {
+.built-with__tile.is-visible {
   opacity: 1;
   transform: translateY(0);
 }
 
-.built-with__item:hover,
-.built-with__item:focus-visible {
+.built-with__tile:hover,
+.built-with__tile:focus-visible {
   transform: translateY(-2px);
   box-shadow: var(--built-with-shadow-hover);
+  border-color: var(--built-with-border-hover);
   outline: 2px solid rgba(255, 255, 255, 0.35);
   outline-offset: 3px;
+}
+
+.built-with__logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  object-fit: cover;
+  filter: grayscale(1) contrast(1.1) brightness(0.9);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.built-with__label {
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
 }
 
 @media (max-width: 720px) {
