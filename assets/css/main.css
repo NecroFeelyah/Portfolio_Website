@@ -666,26 +666,6 @@ body::-webkit-scrollbar {
   border-radius: 40px 40px 0px 0px;
 }
 
-.animatedbackground::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: #f7f7f7;
-  opacity: 0;
-  transition: opacity 0.8s ease;
-  border-radius: 40px 40px 0 0;
-  z-index: 0;
-  pointer-events: none;
-}
-
-.animatedbackground.visible::before {
-  opacity: 1;
-}
-
-.animatedbackground > * {
-  position: relative;
-  z-index: 1;
-}
 
 .parallax-bg {
   position: fixed;

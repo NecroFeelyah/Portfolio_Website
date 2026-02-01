@@ -467,22 +467,33 @@
   });
 
   document.addEventListener("DOMContentLoaded", () => {
-    const animatedBG = document.querySelector(".animatedbackground");
     const scrollContainer = document.querySelector("#viewport");
+    const sections = document.querySelectorAll(".l-section");
 
-    if (!animatedBG || !scrollContainer) return;
+    if (!scrollContainer || sections.length === 0) return;
 
-    const toggleAnimatedBackground = () => {
-      const scrollY = scrollContainer.scrollTop;
-      if (scrollY > 100) {
-        animatedBG.classList.add("visible");
-      } else {
-        animatedBG.classList.remove("visible");
-      }
+    const fadeDistance = 360;
+    const translateDistance = 90;
+
+    const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
+
+    const updateSectionFade = () => {
+      const scrollTop = scrollContainer.scrollTop;
+
+      sections.forEach((section) => {
+        const sectionTop = section.offsetTop;
+        const progress = clamp(scrollTop - sectionTop, 0, fadeDistance);
+        const percent = progress / fadeDistance;
+        const opacity = 1 - percent;
+        const translateY = percent * translateDistance;
+
+        section.style.opacity = opacity.toFixed(3);
+        section.style.transform = `translateY(${translateY}px)`;
+      });
     };
 
-    scrollContainer.addEventListener("scroll", toggleAnimatedBackground);
-    toggleAnimatedBackground();
+    scrollContainer.addEventListener("scroll", updateSectionFade);
+    updateSectionFade();
   });
   
 
