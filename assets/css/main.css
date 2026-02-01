@@ -1990,7 +1990,7 @@ body::-webkit-scrollbar {
 
 .built-with__rows {
   display: grid;
-  gap: 20px;
+  gap: 26px;
 }
 
 .built-with__row {
@@ -2001,7 +2001,7 @@ body::-webkit-scrollbar {
 .built-with__track {
   display: inline-flex;
   align-items: center;
-  gap: 16px;
+  gap: 22px;
   flex-wrap: nowrap;
   will-change: transform;
 }
@@ -2018,6 +2018,20 @@ body::-webkit-scrollbar {
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.03);
   transition: transform 0.35s ease-out, box-shadow 0.35s ease-out, border-color 0.35s ease-out;
   white-space: nowrap;
+}
+
+.built-with__tile--image {
+  padding: 8px;
+  border-radius: 22px;
+}
+
+.built-with__image {
+  width: 280px;
+  height: 180px;
+  border-radius: 16px;
+  object-fit: cover;
+  display: block;
+  filter: saturate(0.9) contrast(1.05);
 }
 
 .built-with__tile:hover {
@@ -2063,6 +2077,11 @@ body::-webkit-scrollbar {
 @media (max-width: 900px) {
   .built-with__header h2 {
     font-size: 30px;
+  }
+
+  .built-with__image {
+    width: 220px;
+    height: 150px;
   }
 }
 
