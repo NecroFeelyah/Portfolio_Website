@@ -468,15 +468,21 @@
 
   document.addEventListener("DOMContentLoaded", () => {
     const animatedBG = document.querySelector(".animatedbackground");
+    const scrollContainer = document.querySelector("#viewport");
 
-    window.addEventListener("scroll", () => {
-      const scrollY = window.scrollY;
+    if (!animatedBG || !scrollContainer) return;
+
+    const toggleAnimatedBackground = () => {
+      const scrollY = scrollContainer.scrollTop;
       if (scrollY > 100) {
         animatedBG.classList.add("visible");
       } else {
         animatedBG.classList.remove("visible");
       }
-    });
+    };
+
+    scrollContainer.addEventListener("scroll", toggleAnimatedBackground);
+    toggleAnimatedBackground();
   });
   
 
